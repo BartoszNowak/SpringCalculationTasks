@@ -1,29 +1,30 @@
 package com.globallogic.ultimateCalculationTool.taskService;
 
-import com.globallogic.ultimateCalculationTool.task.Task;
-import com.globallogic.ultimateCalculationTool.task.TaskDBImpl;
-import com.globallogic.ultimateCalculationTool.task.TaskDBImplRepository;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.globallogic.ultimateCalculationTool.task.Task;
+import com.globallogic.ultimateCalculationTool.task.TaskDBImpl;
+import com.globallogic.ultimateCalculationTool.task.TaskDBImplRepository;
+
 @Service
-public class TaskServiceDBImpl implements TaskService
-{
-    private final TaskDBImplRepository repository;
+public class TaskServiceDBImpl implements TaskService {
+	private final TaskDBImplRepository repository;
 
-    @Autowired
-    public TaskServiceDBImpl(TaskDBImplRepository repository) {this.repository = repository;}
+	@Autowired
+	public TaskServiceDBImpl(TaskDBImplRepository repository) {
+		this.repository = repository;
+	}
 
-    @Override
-    public Task createTask(String description)
-    {
-        return repository.save(new TaskDBImpl(description));
-    }
+	@Override
+	public Task createTask(String description) {
+		return repository.save(new TaskDBImpl(description));
+	}
 
-    @Override
-    public Task getTaskById(final Long id)
-    {
-        return repository.findById(id);
-    }
+	@Override
+	public Optional<Task> getTaskById(final Long id) {
+		return Optional.ofNullable(repository.findById(id));
+	}
 }
-

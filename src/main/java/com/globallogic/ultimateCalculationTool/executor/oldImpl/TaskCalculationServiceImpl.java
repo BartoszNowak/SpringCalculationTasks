@@ -20,7 +20,7 @@ public class TaskCalculationServiceImpl implements TaskCalculationService
         Operation operation = task.getData().getOperation();
         switch(operation)
         {
-            case plus:
+            case PLUS:
                 values.forEach(v -> result.setResult(result.getResult() + v));
                 break;
             case minus:

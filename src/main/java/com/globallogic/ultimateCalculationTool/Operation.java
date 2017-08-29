@@ -2,7 +2,7 @@ package com.globallogic.ultimateCalculationTool;
 
 public enum Operation
 {
-    plus,
+    PLUS,
     minus,
     multiply,
     divide
